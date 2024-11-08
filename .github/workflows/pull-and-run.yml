@@ -9,12 +9,13 @@ jobs:
     - name: Docker Login
       run: |
         echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
-
     - name: Docker Pull and Run
       run: |
         docker pull "${{ secrets.DOCKER_USER }}/node-test"
-        docker run --rm -v ${{ github.workspace }}/results:/app/results "${{ secrets.DOCKER_USER }}/node-test"
-
+        docker run --rm -v ${{ github.workspace }}/results:/app/results \
+        -e ZEROSTEP_TOKEN="${{ secrets.ZEROSTEP_TOKEN }}" \
+        "${{ secrets.DOCKER_USER }}/node-test"
+      
     - name: Upload Screenshot Artifact
       uses: actions/upload-artifact@v3
       with:
