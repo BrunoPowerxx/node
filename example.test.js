@@ -3,18 +3,18 @@ import { ai } from '@zerostep/playwright';
 import fs from 'fs';
 
 test('zerostep example', async ({ page }) => {
-  await page.goto('https://supabets.com/');
+  // await page.goto('https://supabets.com/');
 
   // Create the arguments object required by ai()
   const aiArgs = { page, test };
 
   // Get the header text from the site
-  const headerText = await ai('Get the header text', aiArgs);
+  // const headerText = await ai('Get the header text', aiArgs);
 
   // Go to Google and perform a search with the header text
-  await page.goto('https://google.com/');
-  await ai(`Type "${headerText}" in the search box`, aiArgs);
-  await ai('Press enter', aiArgs);
+  await page.goto('https://new.hollywoodbets.net/');
+  // await ai(`Type "${headerText}" in the search box`, aiArgs);
+  // await ai('Press enter', aiArgs);
 
   // Wait for the search results page to load
   await page.waitForLoadState('networkidle');
