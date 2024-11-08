@@ -3,12 +3,12 @@ import { ai } from '@zerostep/playwright';
 import fs from 'fs';
 
 test('zerostep example', async ({ page }) => {
-  await page.goto('https://zerostep.com/');
+  await page.goto('https://supabets.com/');
 
   // Create the arguments object required by ai()
   const aiArgs = { page, test };
 
-  // Get the header text from ZeroStep's site
+  // Get the header text from the site
   const headerText = await ai('Get the header text', aiArgs);
 
   // Go to Google and perform a search with the header text
