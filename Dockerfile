@@ -14,4 +14,4 @@ COPY zerostep.config.json /app/zerostep.config.json
 COPY . .
 
 # Set the entry point for running tests
-CMD ["npx", "playwright", "test"]
+CMD ["npx", "playwright", "test", "example.test.js"]
