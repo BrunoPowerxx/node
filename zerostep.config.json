@@ -1,4 +1,4 @@
 {
-  "TOKEN": "<drop token here if not using an environment variable>",
+  "TOKEN": "${ZEROSTEP_TOKEN}",
   "LOGS_ENABLED": true
 }
