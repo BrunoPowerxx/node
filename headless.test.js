@@ -3,17 +3,36 @@ import { ai } from '@zerostep/playwright';
 import fs from 'fs';
 import headless from 'headless';
 
-headless((err, childProcess, servernum) => {
-  if (err) {
-    console.error('Error starting Xvfb:', err);
-    return;
-  }
+let xvfbStarted = false;
 
-  console.log('Xvfb running on server number', servernum);
+// Start Xvfb before Playwright tests
+async function startXvfb() {
+  return new Promise((resolve, reject) => {
+    headless((err, childProcess, servernum) => {
+      if (err) {
+        console.error('Error starting Xvfb:', err);
+        reject(err);
+      } else {
+        console.log('Xvfb running on server number', servernum);
+        xvfbStarted = true;
+        resolve();
+      }
+    });
+  });
+}
 
-  test('zerostep example', async ({ page }) => {
+// Define the Playwright test
+test.describe('zerostep example', () => {
+  test.beforeAll(async () => {
+    if (!xvfbStarted) {
+      await startXvfb();
+    }
+  });
+
+  test('captures screenshot after navigating to page', async ({ page }) => {
     const aiArgs = { page, test };
 
+    // Example navigation and actions using ZeroStep AI
     await page.goto('https://new.hollywoodbets.net/');
     await page.waitForLoadState('networkidle');
 
@@ -23,7 +42,6 @@ headless((err, childProcess, servernum) => {
     }
 
     await page.screenshot({ path: `${screenshotDir}/search_results.png`, fullPage: true });
-
     console.log("Screenshot taken and saved to /app/results");
   });
 });
