@@ -10,6 +10,9 @@ RUN npm install @zerostep/playwright -D
 # Copy your zerostep.config.json file into the container
 COPY zerostep.config.json /app/zerostep.config.json
 
+# Install headless
+RUN npm install headless
+
 # copy scripts
 COPY . .
 
