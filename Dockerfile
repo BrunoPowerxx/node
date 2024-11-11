@@ -19,4 +19,4 @@ RUN npm install headless
 COPY . .
 
 # Set the entry point for running tests
-CMD ["xvfb-run", "-s", "-screen 0 1024x768x24", "npx", "playwright", "test", "--headed"]
+CMD ["xvfb-run", "npx", "playwright", "test"]
