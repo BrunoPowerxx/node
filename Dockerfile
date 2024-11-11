@@ -4,6 +4,8 @@ FROM mcr.microsoft.com/playwright:v1.48.2-focal
 # Set the working directory 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y xvfb
+
 # Install Zerostep Playwright AI
 RUN npm install @zerostep/playwright -D
 
@@ -17,4 +19,4 @@ RUN npm install headless
 COPY . .
 
 # Set the entry point for running tests
-CMD ["npx", "playwright", "test", "--headed"]
+CMD ["xvfb-run", "-s", "-screen 0 1024x768x24", "npx", "playwright", "test", "--headed"]
