@@ -17,4 +17,4 @@ RUN npm install headless
 COPY . .
 
 # Set the entry point for running tests
-CMD ["npx", "playwright", "test", "headless.test.js", "--headed"]
+CMD ["npx", "playwright", "test", "--headed"]
