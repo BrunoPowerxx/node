@@ -5,7 +5,6 @@ import headless from 'headless';
 
 let xvfbStarted = false;
 
-// Start Xvfb before Playwright tests
 async function startXvfb() {
   return new Promise((resolve, reject) => {
     headless((err, childProcess, servernum) => {
@@ -21,7 +20,6 @@ async function startXvfb() {
   });
 }
 
-// Define the Playwright test
 test.describe('zerostep example', () => {
   test.beforeAll(async () => {
     if (!xvfbStarted) {
@@ -31,8 +29,6 @@ test.describe('zerostep example', () => {
 
   test('captures screenshot after navigating to page', async ({ page }) => {
     const aiArgs = { page, test };
-
-    // Example navigation and actions using ZeroStep AI
     await page.goto('https://new.hollywoodbets.net/');
     await page.waitForLoadState('networkidle');
 
