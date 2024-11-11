@@ -1,13 +1,6 @@
-// @ts-check
-
-/** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
-  // use: { headless: false },
-  webServer: {
-    command: "npm run build && npm run preview",
-    port: 4173
-  },
-  workers: process.env.CI ? 2 : undefined,
+  use: { headless: false },
+  workers: process.env.CI ? 1 : undefined,
   testDir: "tests"
 }
 
