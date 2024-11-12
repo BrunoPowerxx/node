@@ -3,9 +3,9 @@ import { ai } from '@zerostep/playwright';
 import fs from 'fs';
 import headless from 'headless';
 
-let xvfbStarted = false;
+// let xvfbStarted = false;
 
-async function startXvfb() {
+// async function startXvfb() {
   return new Promise((resolve, reject) => {
     headless((err, childProcess, servernum) => {
       if (err) {
