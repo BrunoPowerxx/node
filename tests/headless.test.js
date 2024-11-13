@@ -26,7 +26,7 @@ test.describe('zerostep example', () => {
     await ai('Click on the checkbox (Verify you are human)', aiArgs).catch( e => {
       console.log("Failed to click checkbox", e.message);
     });
-    await page.waitForTimeOut(3000);
+    await page.waitForTimeout(5000);
     await page.waitForLoadState('networkidle');
     // const screenshotDir = '/app/results';
     // if (!fs.existsSync(screenshotDir)) {
