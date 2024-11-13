@@ -1,5 +1,5 @@
 const config = {
-  use: { headless: true },
+  use: { headless: false },
   workers: process.env.CI ? 1 : undefined,
   testDir: "./tests"
 }
