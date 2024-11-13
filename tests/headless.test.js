@@ -8,9 +8,12 @@ test.describe('zerostep example', () => {
 
   test('captures screenshot after navigating to page', async ({ page }) => {
     const aiArgs = { page, test };
-    await page.goto('https://whatmyuseragent.com/');
+    await page.goto('https://new.hollywoodbets.net/');
     await page.waitForLoadState('networkidle');
-
+    await ai('Click on the checkbox', aiArgs).catch( e => {
+      console.log("Failed to click checkbox", e.message);
+    });
+    await page.waitForLoadState('networkidle');
     const screenshotDir = '/app/results';
     if (!fs.existsSync(screenshotDir)) {
       fs.mkdirSync(screenshotDir, { recursive: true });
