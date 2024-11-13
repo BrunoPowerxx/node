@@ -8,7 +8,7 @@ test.describe('zerostep example', () => {
 
   test('captures screenshot after navigating to page', async ({ page }) => {
     const aiArgs = { page, test };
-    await page.goto('https://whatsmyuseragent.com/');
+    await page.goto('https://whatmyuseragent.com/');
     await page.waitForLoadState('networkidle');
 
     const screenshotDir = '/app/results';
