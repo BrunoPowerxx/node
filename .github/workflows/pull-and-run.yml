@@ -19,5 +19,5 @@ jobs:
     - name: Upload Screenshot Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: search-results-screenshot
-        path: results/search_results.png
+        name: search-results
+        path: results/
