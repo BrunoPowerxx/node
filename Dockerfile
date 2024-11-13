@@ -10,4 +10,4 @@ RUN npm install headless
 
 COPY . .
 
-CMD ["xvfb-run", "npx", "playwright", "test"]
+CMD ["npx", "playwright", "test"]
