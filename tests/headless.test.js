@@ -10,7 +10,7 @@ test.describe('zerostep example', () => {
     const aiArgs = { page, test };
     await page.goto('https://new.hollywoodbets.net/');
     await page.waitForLoadState('networkidle');
-    await ai('Click on the checkbox', aiArgs).catch( e => {
+    await ai('Click on the checkbox (Verify you are human)', aiArgs).catch( e => {
       console.log("Failed to click checkbox", e.message);
     });
     await page.waitForLoadState('networkidle');
